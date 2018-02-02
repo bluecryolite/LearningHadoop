@@ -25,7 +25,7 @@ fi
 ./hadoop fs -rm /wordcount/output/*
 ./hadoop fs -rmdir /wordcount/output
 
-sourcedir=~/git/LearningHadoop/WordCounter
+sourcedir=~/git/LearningHadoop
 ./hadoop fs -put -f $sourcedir/samples/wordcount/file* /wordcount/input
 
 ./hadoop jar $sourcedir/bin/wordcount.jar WordCount /wordcount/input /wordcount/output
