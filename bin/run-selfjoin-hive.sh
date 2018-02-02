@@ -1,17 +1,5 @@
-solution=wordcount
-sample=$solution
-
-if [ ! -d "../obj" ]; then
-  mkdir ../obj
-fi
-
-if [ ! -d "../obj/$solution" ]; then
-  mkdir ../obj/$solution
-fi
-
-/usr/lib/hadoop/bin/hadoop com.sun.tools.javac.Main ../src/WordCount.java -d ../obj/$solution
-cd ../obj/$solution
-jar cf ../../bin/wordcount.jar *.class
+solution=selfjoin_hive
+sample=selfjoin
 
 cd /usr/lib/hadoop/bin
 
@@ -31,5 +19,5 @@ fi
 sourcedir=~/git/LearningHadoop
 ./hadoop fs -put -f $sourcedir/samples/$sample/file* /$solution/input
 
-./hadoop jar $sourcedir/bin/wordcount.jar WordCount /$solution/input /$solution/output
-
+cd /usr/lib/hive/bin
+./hive -f $sourcedir/bin/sql/selfjoin-hive.hql
